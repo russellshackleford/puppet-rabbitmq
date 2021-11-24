@@ -216,6 +216,8 @@
 #   The state of the service.
 # @param service_manage
 #   Determines if the service is managed.
+# @param service_provider
+#   Override the default detected provider
 # @param service_name
 #   The name of the service to manage.
 # @param service_restart
@@ -360,6 +362,7 @@ class rabbitmq (
   Optional[Integer] $heartbeat                                                                     = undef,
   Enum['running', 'stopped'] $service_ensure                                                       = 'running',
   Boolean $service_manage                                                                          = true,
+  Optional[String[1]] $service_provider                                                            = undef,
   String $service_name                                                                             = 'rabbitmq',
   Boolean $ssl                                                                                     = false,
   Boolean $ssl_only                                                                                = false,
