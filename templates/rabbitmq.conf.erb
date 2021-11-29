@@ -1,0 +1,17 @@
+<% @config_variables.sort.each do |key, value| -%>
+  <%- unless value.nil? -%>
+<%= key %> = <%= value %>
+  <%- end -%>
+<% end -%>
+<% if @config_cluster == 'classic' -%>
+  <%- @cluster_variables.sort.each do |ckey, cvalue| -%>
+    <%- unless cvalue.nil? -%>
+<%= ckey %> = <%= cvalue %>
+    <%- end -%>
+  <%- end -%>
+    <%- num = 1 -%>
+  <%- @cluster_nodes.each do |node| -%>
+cluster_formation.classic_config.nodes.<%= num %> = <%= node %>
+    <%- num += 1 -%>
+  <%- end -%>
+<% end -%>
